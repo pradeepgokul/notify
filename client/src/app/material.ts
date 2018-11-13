@@ -8,7 +8,8 @@ import {
   MatDividerModule,
   MatCardModule,
   MatSelectModule,
-  MatDialogModule
+  MatDialogModule,
+  MatSnackBarModule
 } from '@angular/material';
 import { NgModule } from '@angular/core';
 
@@ -24,8 +25,8 @@ import { NgModule } from '@angular/core';
     MatDividerModule,
     MatCardModule,
     MatSelectModule,
-    MatDialogModule
-
+    MatDialogModule,
+    MatSnackBarModule
   ],
   exports: [
     MatButtonModule,
@@ -37,7 +38,8 @@ import { NgModule } from '@angular/core';
     MatDividerModule,
     MatCardModule,
     MatSelectModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSnackBarModule
   ],
 })
 

@@ -1,0 +1,36 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.example-icon{
+  font-size: 16px;
+}
+
+
+.app-nav{
+  box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+  font-size: 16px;
+}
+
+.logout-button{
+  cursor: pointer;
+  span{
+    vertical-align: top;
+    padding: 5px;
+  }
+
+  i{
+    vertical-align: top;
+    font-size: 20px;
+    margin-top: 6px;
+  }
+}
+
+
+.user-name{
+  margin-top: 18px;
+  margin-right: 10px;
+  span{
+    font-weight: lighter;
+  }
+}

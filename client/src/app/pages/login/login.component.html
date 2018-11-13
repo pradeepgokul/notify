@@ -1,0 +1,28 @@
+<div class="login-container">
+
+  <div class="center-content">
+    <div class="center-ele">
+      <h2>Login</h2>
+      <div class="alert alert-danger max-def" *ngIf="message">
+        {{message}}
+      </div>
+      <form #loginData="ngForm" (submit)="loginUser(loginData.value)">
+        <div class="input-container">
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Email" name="email" required ngModel>
+          </mat-form-field>
+        </div>
+        <div class="input-container">
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput placeholder="Password" type="password" name="password" required ngModel>
+          </mat-form-field>
+        </div>
+        <button mat-raised-button color="primary" type="submit">Login</button>
+        <a routerLink="/register">Create a New Accout!</a>
+      </form>
+    </div>
+  </div>
+
+</div>

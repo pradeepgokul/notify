@@ -1,0 +1,40 @@
+<app-header></app-header>
+<div class="create-component">
+  <div class="bac-btn">
+    <a routerLink="/dashboard"><i class="material-icons">keyboard_arrow_left</i> Go Back Home</a>
+  </div>
+  <mat-card>
+    <section class="mat-typography">
+      <h3>Complaint</h3>
+    </section>
+    <mat-divider></mat-divider>
+    <form #complaintData="ngForm" (submit)="addComment(complaintData.value)">
+      <div class="input-container">
+        <label>Title</label>
+        <p>{{complaint.title}}</p>
+      </div>
+      <div class="input-container">
+        <label>Description</label>
+        <p>{{complaint.description}}</p>
+      </div>
+      <div class="input-container">
+        <mat-form-field>
+          <mat-select [(value)]="selected" name="status" ngModel>
+            <mat-option value="Open">Open</mat-option>
+            <mat-option value="Closed">Closed</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="input-container">
+        <mat-form-field class="form-full-width">
+          <textarea matInput class="mat-input-holder" [(value)]="complaint.comment" placeholder="Comment" name="comment" required ngModel></textarea>
+        </mat-form-field>
+      </div>
+      <div class="input-container">
+        <label>Updated On</label>
+        <p>{{complaint.updatedOn | date: 'MMM d, y, h:mm:ss a'}}</p>
+      </div>
+      <button mat-raised-button color="primary">Update Complaint</button>
+    </form>
+  </mat-card>
+</div>

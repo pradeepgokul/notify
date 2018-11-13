@@ -1,0 +1,35 @@
+<div class="register-container">
+
+  <div class="center-content">
+    <div class="center-ele">
+      <h2>Register</h2>
+      <!-- Template Driven Form -->
+      <form #userData="ngForm" (submit)="registerUser(userData.value)">
+        <div class="input-container">
+          <mat-form-field>
+            <input matInput placeholder="Full Name" name="fullName" required ngModel>
+          </mat-form-field>
+        </div>
+        <div class="input-container">
+          <mat-form-field>
+            <input matInput placeholder="Email" name="email" required ngModel>
+          </mat-form-field>
+        </div>
+        <div class="input-container">
+          <mat-form-field>
+            <input matInput placeholder="Enter your password" name="password" [type]="hide ? 'password' : 'text'" ngModel>
+            <!-- <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon> -->
+          </mat-form-field>
+        </div>
+        <div class="input-container">
+          <mat-form-field>
+            <input matInput placeholder="Mobile Number" name="mobile_number" required ngModel>
+          </mat-form-field>
+        </div>
+
+        <button mat-raised-button color="primary">Register</button>
+      </form>
+    </div>
+  </div>
+
+</div>

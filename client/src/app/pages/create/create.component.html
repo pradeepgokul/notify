@@ -1,0 +1,27 @@
+<app-header></app-header>
+<div class="create-component">
+  <div class="bac-btn">
+    <a routerLink="/complaint-dashboard"><i class="material-icons">keyboard_arrow_left</i> Go Back Home</a>
+  </div>
+  <mat-card>
+    <section class="mat-typography">
+      <h3>Create New Complaint</h3>
+    </section>
+    <mat-divider></mat-divider>
+    <form #complaintData="ngForm" (submit)="addComplaint(complaintData.value)">
+      <div class="input-container">
+        <mat-form-field class="form-full-width">
+          <input class="mat-input-holder" matInput placeholder="Title" name="title" required ngModel>
+        </mat-form-field>
+      </div>
+      <div class="input-container">
+        <mat-form-field class="form-full-width">
+          <!-- <input class="mat-input-holder" matInput placeholder="Description" name="description" required ngModel> -->
+          <textarea matInput class="mat-input-holder" placeholder="Description" name="description" required ngModel></textarea>
+
+        </mat-form-field>
+      </div>
+      <button mat-raised-button color="primary">Create Complaint</button>
+    </form>
+  </mat-card>
+</div>

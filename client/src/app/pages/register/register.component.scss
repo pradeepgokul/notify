@@ -1,0 +1,23 @@
+.center-content{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.center-ele{
+  max-width: 50%;
+  margin-top: 180px;
+  h2{
+    font-size: 1.2rem;
+  }
+  a{
+    font-size: 12px;
+    padding-top: 10px;
+    float: right;
+  }
+}
+
+
+.mat-form-field-infix {
+    width: 260px !important;
+}

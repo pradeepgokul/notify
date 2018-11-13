@@ -6,7 +6,7 @@ This project runs on Angular version 7.0.2 and NodeJS.
 
 Once the server is up and running Navigate to `http://localhost:4200/register` and Click `Create Agent`. A success message will shown.
 
-To LogIn:
+After creating the agent to Log in:
 
 Email : agent1@abc.com
 Password: agent

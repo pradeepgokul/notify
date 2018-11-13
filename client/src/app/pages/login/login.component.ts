@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() { }
 
   loginUser(data) {
-    this.userService.login(data).subscribe((res) => {
+    this.userService.login(data).subscribe((res: any) => {
       console.log(res);
       if(!res.success) {
         this.message = "Incorrect Username/Password"

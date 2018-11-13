@@ -19,7 +19,7 @@ export class ComplaintUpdateComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.id = params.id;
-      this.complaintsService.getComplaintsById(this.id).subscribe(res => {
+      this.complaintsService.getComplaintsById(this.id).subscribe((res: any) => {
         this.complaint = res;
         this.selected = res.status;
         console.log(this.complaint);

@@ -6,7 +6,7 @@ This project runs on Angular version 7.0.2 and NodeJS.
 
 Open `Terminal` or `Command Prompt`.
 
-Clone the project and Type `cd [path\to\cloned\destination\]survey-pro`
+Clone the project and Type `cd [path\to\cloned\destination\]notify`
 
 
 ### Express server
@@ -15,7 +15,8 @@ Make sure `mongodb` is running on the local machine.
 
 Then `cd server`
 
-Run `npm run dev` for a HTTP server.
+Install the packages using `npm install` and run `npm run dev` for a HTTP server.
+
 
 ### Angular Server
 
@@ -23,7 +24,7 @@ Open New `Terminal` or `Command Prompt`.
 
 Then `cd client`
 
-Run `npm start` for a dev server. Navigate to `http://localhost:4200/`.
+Install the packages using `npm install` and run `npm start` for a dev server. Navigate to `http://localhost:4200/`.
 
 
 ## Requirements

@@ -8,7 +8,7 @@
       <h3>Create New Complaint</h3>
     </section>
     <mat-divider></mat-divider>
-    <form #complaintData="ngForm" (ngSubmit)="complaintData.form.valid && Complaint(complaintData.value)">
+    <form #complaintData="ngForm" (ngSubmit)="complaintData.form.valid && addComplaint(complaintData.value)">
       <div class="input-container">
         <mat-form-field class="form-full-width">
           <input class="mat-input-holder" matInput placeholder="Title" name="title" required ngModel>

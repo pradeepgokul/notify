@@ -16,8 +16,12 @@ export class ComplaintsService {
     return this.http.get('/api/complaint/' + a);
   }
 
-  updateComplaint(id, comment) {
-    return this.http.post('/api/complaint/update/'+id, comment);
+  updateComplaint(id, comment, createdBy) {
+    const commentArr = {
+      comment: comment,
+      commentedBy: createdBy
+    }
+    return this.http.post('/api/complaint/comment/'+id, commentArr);
   }
 
   addComplaints(data) {

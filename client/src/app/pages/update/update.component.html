@@ -18,15 +18,25 @@
         <p>{{complaint.description}}</p>
       </div>
       <div class="input-container">
-        <mat-form-field class="form-full-width">
-          <textarea matInput class="mat-input-holder" [value]="complaint.comment" placeholder="Comment" name="comment" required ngModel></textarea>
-        </mat-form-field>
-      </div>
-      <div class="input-container">
         <label>Updated On</label>
         <p>{{complaint.updatedOn | date: 'MMM d, y, h:mm:ss a'}}</p>
       </div>
-      <button mat-raised-button color="primary">Update Complaint</button>
+      <div class="input-container">
+        <label>Comments</label>
+        <p class="comment-index" *ngFor="let comp of complaint.comments">
+          <span class="user-com">{{comp.commentedBy}}</span>
+          <br>
+          <span class="user-comment">{{comp.comment}}</span>
+
+        </p>
+      </div>
+      <div class="input-container">
+        <mat-form-field class="form-full-width">
+          <textarea matInput class="mat-input-holder" placeholder="Write a Comment" name="comment" required ngModel></textarea>
+        </mat-form-field>
+      </div>
+
+      <button mat-raised-button color="primary">Post Comment</button>
     </form>
   </mat-card>
 </div>

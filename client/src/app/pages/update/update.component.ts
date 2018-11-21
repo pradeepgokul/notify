@@ -11,8 +11,8 @@ import { ComplaintsService } from '../../core/complaints/complaints.service';
 export class UpdateComponent implements OnInit {
 
   id;
-  complaint;
-
+  complaint:any;
+  createdBy;
 
   constructor(private router: Router, private route: ActivatedRoute, private complaintsService: ComplaintsService) { }
 
@@ -21,13 +21,14 @@ export class UpdateComponent implements OnInit {
       this.id = params.id;
       this.complaintsService.getComplaintsById(this.id).subscribe(res => {
         this.complaint = res;
+        this.createdBy = this.complaint.creatorName;
         console.log(this.complaint);
       });
     });
   }
 
   addComment(comment) {
-    this.complaintsService.updateComplaint(this.id, comment).subscribe(() => {
+    this.complaintsService.updateComplaint(this.id, comment, this.createdBy).subscribe(() => {
       console.log('Updated!')
     });
   }

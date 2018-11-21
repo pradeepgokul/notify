@@ -25,7 +25,7 @@ const Complaint = require('../models/Complaint');
  */
 
 
-router.post('/api/register', cors(corsOptions), (req, res, next) => {
+router.post('/api/register', cors(corsOptions), (req, res) => {
   let user = new Users(req.body);
   user.save()
     .then(user => {
@@ -44,7 +44,7 @@ router.post('/api/register', cors(corsOptions), (req, res, next) => {
  */
 
 
-router.post('/api/login', cors(corsOptions), (req, res, next) => {
+router.post('/api/login', cors(corsOptions), (req, res) => {
 
   if(!req.body.email) {
     res.json({success: false, message: 'Enter value for Email' });
@@ -92,22 +92,30 @@ router.post('/api/login', cors(corsOptions), (req, res, next) => {
  *   Complaint Route
  */
 
-router.get('/api/complaints', cors(corsOptions), (req, res, next) => {
+router.get('/api/complaints', cors(corsOptions), (req, res) => {
   Complaint.find({}, (err, result) => {
+    if(err) return console.log(err);
     res.json(result);
   });
 });
 
-router.get('/api/complaint/:id', cors(corsOptions), (req, res, next) => {
+router.get('/api/complaint/:id', cors(corsOptions), (req, res) => {
   Complaint.findById(req.params.id, (err, result) => {
+    if(err) return console.log(err);
     res.json(result);
   });
 });
 
-router.post('/api/complaint/update/:id', cors(corsOptions), (req, res, next) => {
+router.post('/api/complaint/comment/:id', cors(corsOptions), (req, res) => {
   Complaint.findById(req.params.id, (err, result) => {
     if(!result) return next(new Error('Could not find complaint'));
-    result.comment = req.body.comment;
+    console.log(req.body);
+    const commentData = {
+      comment: req.body.comment.comment,
+      commentedBy: req.body.commentedBy
+    }
+
+    result.comments.push(commentData);
     result.status = req.body.status;
     result.updatedOn = Date.now();
 
@@ -121,13 +129,15 @@ router.post('/api/complaint/update/:id', cors(corsOptions), (req, res, next) => 
   });
 });
 
-router.get('/api/complaints/:id', cors(corsOptions), (req, res, next) => {
+router.get('/api/complaints/:id', cors(corsOptions), (req, res) => {
   Complaint.find({createdBy: req.params.id}, (err, result) => {
+    if(err) return console.log(err);
+
     res.json(result);
   });
 });
 
- router.post('/api/complaints/add', cors(corsOptions), (req, res, next) => {
+ router.post('/api/complaints/add', cors(corsOptions), (req, res) => {
    let complaint = new Complaint(req.body);
    complaint.save()
      .then(complaint => {

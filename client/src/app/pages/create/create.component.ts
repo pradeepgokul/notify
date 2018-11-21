@@ -19,12 +19,14 @@ export class CreateComponent implements OnInit {
 
   addComplaint(a) {
     const userId = JSON.parse(localStorage.getItem('userKey')).email;
+    const userName = JSON.parse(localStorage.getItem('userKey')).name;
     console.log(userId);
     const complaint = {
       title: a.title,
       description: a.description,
       status: a.status,
-      createdBy: userId
+      createdBy: userId,
+      creatorName: userName
     }
     this.complaintsService.addComplaints(complaint).subscribe(() => {
       console.log('Registered!');

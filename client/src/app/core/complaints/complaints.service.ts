@@ -33,9 +33,9 @@ export class ComplaintsService {
     return this.http.get('/api/complaints/' + userEmail);
   }
 
-  // updateComplaints(id) {
-  //   return this.http.post(`/api/complaints/update/`);
-  // }
+  updateComplaintStatus(id, status) {
+    return this.http.post('/api/complaint/status/' + id, status);
+  }
 
 
 }

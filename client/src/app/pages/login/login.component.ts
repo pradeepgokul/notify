@@ -25,11 +25,13 @@ export class LoginComponent implements OnInit {
         const token = res.token;
         const user  = res.user;
         this.userService.storeUserData(token, user);
-        if(res.user.userType === "customer") {
-          this.router.navigate(['/complaint-dashboard']);
-        } else {
-          this.router.navigate(['/dashboard']);
-        }
+        // if(res.user.userType === "customer") {
+        //   this.router.navigate(['/complaint-dashboard']);
+        // } else {
+        //   this.router.navigate(['/dashboard']);
+        // }
+
+        this.router.navigate(['/warehouse']);
       }
     })
   }

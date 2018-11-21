@@ -4,6 +4,7 @@ const cors = require('cors');
 const router = express.Router();
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
+const _ = require('lodash');
 
 // Cors Config
 var corsOptions = {
@@ -19,6 +20,11 @@ const Complaint = require('../models/Complaint');
 
 
 // Routes Middleware
+
+/*
+ *   Authentication Middleware Route
+ */
+
 
 /*
  * Register Route
@@ -82,9 +88,7 @@ router.post('/api/login', cors(corsOptions), (req, res) => {
 });
 
 
-/*
- *   Authentication Middleware Route
- */
+
 
 
 
@@ -95,7 +99,8 @@ router.post('/api/login', cors(corsOptions), (req, res) => {
 router.get('/api/complaints', cors(corsOptions), (req, res) => {
   Complaint.find({}, (err, result) => {
     if(err) return console.log(err);
-    res.json(result);
+    // result = _.sortBy(result,"updatedOn");
+    res.json(result = _.sortBy(result,"updatedOn"));
   });
 });
 
@@ -105,6 +110,27 @@ router.get('/api/complaint/:id', cors(corsOptions), (req, res) => {
     res.json(result);
   });
 });
+
+router.post('/api/complaint/status/:id', cors(corsOptions), (req, res) => {
+  Complaint.findById(req.params.id, (err, result) => {
+    if(err) return console.log(err);
+
+    result.status = req.body.status;
+    result.updatedOn = Date.now();
+
+    result.save()
+      .then(result => {
+        res.json('Updated Query!');
+      })
+      .catch(err => {
+        res.status(400).send('Update Failed!');
+      })
+
+  });
+});
+
+
+
 
 router.post('/api/complaint/comment/:id', cors(corsOptions), (req, res) => {
   Complaint.findById(req.params.id, (err, result) => {

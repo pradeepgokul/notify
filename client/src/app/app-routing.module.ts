@@ -5,12 +5,11 @@ import { AuthGuard } from './auth.guard';
 
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { HomeComponent } from './pages/home/home.component';
 import { CreateComponent } from './pages/create/create.component';
 import { UpdateComponent } from './pages/update/update.component';
-import { CustomerDashboardComponent } from './pages/customer-dashboard/customer-dashboard.component';
-import { ComplaintUpdateComponent } from './pages/complaint-update/complaint-update.component';
+import { WarehouseComponent } from './pages/warehouse/warehouse.component';
+
 
 
 
@@ -28,13 +27,8 @@ const routes: Routes = [
     component: RegisterComponent
   },
   {
-    path: 'dashboard',
-    component: DashboardComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'complaint-dashboard',
-    component: CustomerDashboardComponent,
+    path: 'warehouse',
+    component: WarehouseComponent,
     canActivate: [AuthGuard]
   },
   {
@@ -45,11 +39,6 @@ const routes: Routes = [
   {
     path: 'update/:id',
     component: UpdateComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'complaint-update/:id',
-    component: ComplaintUpdateComponent,
     canActivate: [AuthGuard]
   }
 
@@ -63,10 +52,8 @@ export class AppRoutingModule { }
 export const routingComponents = [
   RegisterComponent,
   LoginComponent,
-  DashboardComponent,
   HomeComponent,
   CreateComponent,
   UpdateComponent,
-  CustomerDashboardComponent,
-  ComplaintUpdateComponent
+  WarehouseComponent
 ];

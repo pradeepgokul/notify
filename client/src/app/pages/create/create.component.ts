@@ -30,7 +30,7 @@ export class CreateComponent implements OnInit {
     }
     this.complaintsService.addComplaints(complaint).subscribe(() => {
       console.log('Registered!');
-      this.router.navigate(['/complaint-dashboard']);
+      this.router.navigate(['/warehouse']);
     });
   }
 

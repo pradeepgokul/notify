@@ -1,42 +1,88 @@
-<app-header></app-header>
-<div class="create-component">
-  <div class="bac-btn">
-    <a routerLink="/complaint-dashboard"><i class="material-icons">keyboard_arrow_left</i> Go Back Home</a>
-  </div>
-  <mat-card>
-    <section class="mat-typography">
-      <h3>Complaint</h3>
-    </section>
-    <mat-divider></mat-divider>
-    <form #complaintData="ngForm" (submit)="addComment(complaintData.value)">
+<div class="customer" *ngIf="customer">
+  <app-header></app-header>
+
+  <div class="complaint-modal">
+    <div class="goback">
+      <button mat-raised-button color="primary" routerLink="/warehouse"><i class="material-icons">keyboard_arrow_left</i>Go Back</button>
+    </div>
+    <mat-card>
       <div class="input-container">
-        <label>Title</label>
-        <p>{{complaint.title}}</p>
+        <h4>{{complaint?.title}}</h4>
       </div>
       <div class="input-container">
-        <label>Description</label>
-        <p>{{complaint.description}}</p>
+        <p class="desc">{{complaint?.description}}</p>
       </div>
       <div class="input-container">
-        <label>Updated On</label>
-        <p>{{complaint.updatedOn | date: 'MMM d, y, h:mm:ss a'}}</p>
+        <p class="date"><span>Updated On : </span>{{complaint?.updatedOn | date: 'MMM d, y, h:mm:ss a'}}</p>
       </div>
+      <hr>
       <div class="input-container">
         <label>Comments</label>
-        <p class="comment-index" *ngFor="let comp of complaint.comments">
-          <span class="user-com">{{comp.commentedBy}}</span>
+        <p class="comment-index" *ngFor="let elem of commentHolder">
+          <span class="user-com">{{elem.commentedBy}}</span>
           <br>
-          <span class="user-comment">{{comp.comment}}</span>
-
+          <span class="user-comment">{{elem.comment}}</span>
         </p>
       </div>
+
+      <form #comments="ngForm" (submit)="addComment(comments.value)">
+        <div class="input-container">
+          <mat-form-field class="form-full-width">
+            <textarea matInput class="mat-input-holder" placeholder="Write a Comment" name="comment" required ngModel></textarea>
+          </mat-form-field>
+        </div>
+        <button mat-raised-button color="primary">Post Comment</button>
+      </form>
+
+    </mat-card>
+  </div>
+</div>
+<div class="agent" *ngIf="!customer">
+  <app-header></app-header>
+
+  <div class="complaint-modal">
+    <div class="goback">
+      <button mat-raised-button color="primary" routerLink="/warehouse"><i class="material-icons">keyboard_arrow_left</i>Go Back</button>
+    </div>
+    <mat-card>
       <div class="input-container">
-        <mat-form-field class="form-full-width">
-          <textarea matInput class="mat-input-holder" placeholder="Write a Comment" name="comment" required ngModel></textarea>
-        </mat-form-field>
+        <h4>{{complaint?.title}}</h4>
+      </div>
+      <div class="input-container">
+        <p class="desc">{{complaint?.description}}</p>
+      </div>
+      <div class="input-container">
+        <p class="date"><span>Updated On : </span>{{complaint?.updatedOn | date: 'MMM d, y, h:mm:ss a'}}</p>
+      </div>
+      <hr>
+      <div class="input-container">
+        <label>Comments</label>
+        <p class="comment-index" *ngFor="let elem of commentHolder">
+          <span class="user-com">{{elem.commentedBy}}</span>
+          <br>
+          <span class="user-comment">{{elem.comment}}</span>
+        </p>
       </div>
 
-      <button mat-raised-button color="primary">Post Comment</button>
-    </form>
-  </mat-card>
+      <div class="input-container">
+        <label>Status</label>
+          <mat-form-field>
+            <mat-select [(value)]="selected" name="status" ngModel (selectionChange)="onStatusChange($event)">
+              <mat-option value="Open">Open</mat-option>
+              <mat-option value="Closed">Closed</mat-option>
+            </mat-select>
+          </mat-form-field>
+      </div>
+
+      <form #comments="ngForm" (submit)="addComment(comments.value)">
+        <div class="input-container">
+          <mat-form-field class="form-full-width">
+            <textarea matInput class="mat-input-holder" placeholder="Write a Comment" name="comment" required ngModel></textarea>
+          </mat-form-field>
+        </div>
+        <button mat-raised-button color="primary">Post Comment</button>
+      </form>
+
+    </mat-card>
+  </div>
 </div>

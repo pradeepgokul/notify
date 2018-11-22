@@ -25,7 +25,7 @@
         </p>
       </div>
 
-      <form #commentData="ngForm" (submit)="commnetData.form.valid && addComment(comments.value)">
+      <form #commentData="ngForm" (ngSubmit)="commentData.form.valid && addComment(commentData.value)" novalidate>
         <div class="input-container">
           <mat-form-field class="form-full-width">
             <textarea matInput class="mat-input-holder" placeholder="Write a Comment" name="comment" required ngModel></textarea>

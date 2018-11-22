@@ -8,12 +8,12 @@
       </div>
 
       <div class="complaints-tab">
-        <mat-card>
-        <table mat-table [dataSource]="complaint" *ngIf="complaint?.length > 0">
+        <mat-card [hidden]="hide">
+        <table mat-table [dataSource]="complaint" matSort matSortActive="updatedOn" matSortDirection="desc" matSortDisableClear>
 
           <!-- Title Column -->
           <ng-container matColumnDef="title">
-            <th mat-header-cell *matHeaderCellDef> Title </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Title </th>
             <td mat-cell *matCellDef="let element"> {{element.title}} </td>
           </ng-container>
 
@@ -31,7 +31,7 @@
 
           <!-- updatedOn Column -->
           <ng-container matColumnDef="updatedOn">
-            <th mat-header-cell *matHeaderCellDef> Update On </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Update On </th>
             <td mat-cell *matCellDef="let element"> {{element.updatedOn | date: 'MMM d, y, h:mm:ss a'}} </td>
           </ng-container>
 
@@ -48,13 +48,13 @@
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
-        <div class="empty-data" *ngIf="complaint?.length === 0">
-          No Records Found!
-          <p>Click on "Lodge Complaint" to register new complaint</p>
-        </div>
         </mat-card>
       </div>
 
+      <div class="empty-data" [hidden]="!hide">
+        No Records Found!
+        <p>Click on "Lodge Complaint" to register new complaint</p>
+      </div>
 
     </div>
 
@@ -66,13 +66,10 @@
   <div class="view-container">
 
     <div class="container">
-      <!-- <div class="create-button">
-        <button mat-raised-button color="primary" routerLink="/create"><i class="material-icons">add</i> Lodge Complaint </button>
-      </div> -->
 
       <div class="complaints-tab">
-        <mat-card>
-        <table mat-table  [dataSource]="complaint" *ngIf="complaint?.length > 0">
+        <mat-card [hidden]="hide">
+        <table mat-table  [dataSource]="complaint" matSort matSortActive="updatedOn" matSortDirection="desc" matSortDisableClear>
 
           <!-- Title Column -->
           <ng-container matColumnDef="title">
@@ -100,7 +97,7 @@
 
           <!-- updatedOn Column -->
           <ng-container matColumnDef="updatedOn">
-            <th mat-header-cell *matHeaderCellDef> Update On </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Update On </th>
             <td mat-cell *matCellDef="let element"> {{element.updatedOn | date: 'MMM d, y, h:mm:ss a'}} </td>
           </ng-container>
 
@@ -116,11 +113,13 @@
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
-        <div class="empty-data" *ngIf="complaint?.length === 0">
-          No Complaints Recorded!
-          <p></p>
-        </div>
+
         </mat-card>
+      </div>
+
+      <div class="empty-data" [hidden]="!hide">
+        No Complaints Recorded!
+        <p>Customers have not registered Complaints yet!</p>
       </div>
 
 

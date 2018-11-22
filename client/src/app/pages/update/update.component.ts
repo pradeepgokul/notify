@@ -18,6 +18,7 @@ export class UpdateComponent implements OnInit {
   userType;
   customer;
   selected;
+  isDisabled = false;
 
   constructor(private router: Router, private route: ActivatedRoute, private complaintsService: ComplaintsService, private snackBar: MatSnackBar) { }
 
@@ -62,9 +63,13 @@ export class UpdateComponent implements OnInit {
     });
   }
 
+  validateComment(event) {
+    console.log(event);
+  }
+
   addComment(comment) {
     console.log(comment);
-    this.complaintsService.updateComplaint(this.id, comment, this.createdBy).subscribe(() => {
+    this.complaintsService.updateComplaint(this.id, comment, this.createdBy).subscribe(res => {
       console.log('Updated!')
       this.router.navigate(['/warehouse']);
     });

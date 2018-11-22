@@ -25,13 +25,13 @@
         </p>
       </div>
 
-      <form #comments="ngForm" (submit)="addComment(comments.value)">
+      <form #commentData="ngForm" (submit)="commnetData.form.valid && addComment(comments.value)">
         <div class="input-container">
           <mat-form-field class="form-full-width">
             <textarea matInput class="mat-input-holder" placeholder="Write a Comment" name="comment" required ngModel></textarea>
           </mat-form-field>
         </div>
-        <button mat-raised-button color="primary">Post Comment</button>
+        <button mat-raised-button color="primary" [disabled]="!commentData.form.valid">Post Comment</button>
       </form>
 
     </mat-card>
@@ -74,13 +74,13 @@
           </mat-form-field>
       </div>
 
-      <form #comments="ngForm" (submit)="addComment(comments.value)">
+      <form #commentData="ngForm" (ngSubmit)="commentData.form.valid && addComment(commentData.value)" novalidate>
         <div class="input-container">
           <mat-form-field class="form-full-width">
             <textarea matInput class="mat-input-holder" placeholder="Write a Comment" name="comment" required ngModel></textarea>
           </mat-form-field>
         </div>
-        <button mat-raised-button color="primary">Post Comment</button>
+        <button mat-raised-button color="primary" [disabled]="!commentData.form.valid">Post Comment</button>
       </form>
 
     </mat-card>
